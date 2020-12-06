@@ -99,7 +99,7 @@ namespace HashtagChris.DotNetBlueZ.Extensions
       return null;
     }
 
-    public static async Task<List<GattCharacteristic>> GetAllCharacteristicAsync(this IGattService1 service, string characteristicUUID)
+    public static async Task<List<GattCharacteristic>> GetAllCharacteristicAsync(this IGattService1 service)
     {
         var result = new List<GattCharacteristic>();
         var characteristics = await BlueZManager.GetProxiesAsync<IGattCharacteristic1>(BluezConstants.GattCharacteristicInterface, service);
