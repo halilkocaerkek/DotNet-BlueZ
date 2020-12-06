@@ -104,24 +104,24 @@ class Program
         Console.WriteLine();
         servicesUUID.ToList().ForEach(async s =>
         {
-            Console.WriteLine($"Service: {s}");
+            
             service = await device.GetServiceAsync(s);
             if (service != null)
             {
-                index = 0;
                 var chars = await service.GetAllCharacteristicAsync();
                 chars?.ToList()
                     .ForEach(async c =>
                     {
-                        //Console.WriteLine($"\tCharacteristic {index++}: {c}");
                         var characteristic = await service.GetCharacteristicAsync(c);
                         try
                         {
                             byte[] value = await characteristic.ReadValueAsync(timeout);
-                            Console.WriteLine($"\t{c} - Value: {value.ToHex()}, {value.ToInt()}");
+                            Console.WriteLine($"Service: {s}, characteristic: {c}");
+                            Console.WriteLine($"\tValue: {value.ToHex()}, {value.ToInt()}");
                         }
                         catch (Exception ex)
                         {
+                            Console.WriteLine($"Service: {s}, characteristic: {c}");
                             Console.WriteLine($"\t{c} - Value couldn't read: {ex.Message}");
                         }
                     });
@@ -132,7 +132,7 @@ class Program
             }
         });
 
-        await Task.Delay(100);
+        await Task.Delay(1000);
         await device.DisconnectAsync();
         Console.WriteLine("Disconnected.");
     }
