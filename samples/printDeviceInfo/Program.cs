@@ -132,6 +132,7 @@ class Program
             }
         });
 
+        await Task.Delay(100);
         await device.DisconnectAsync();
         Console.WriteLine("Disconnected.");
     }
