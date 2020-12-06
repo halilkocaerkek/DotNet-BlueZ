@@ -113,16 +113,16 @@ class Program
                 chars?.ToList()
                     .ForEach(async c =>
                     {
-                        Console.WriteLine($"\tCharacteristic {index++}: {c}");
+                        //Console.WriteLine($"\tCharacteristic {index++}: {c}");
                         var characteristic = await service.GetCharacteristicAsync(c);
                         try
                         {
                             byte[] value = await characteristic.ReadValueAsync(timeout);
-                            Console.WriteLine($"\tValue: {value.ToHex()}");
+                            Console.WriteLine($"\t{c} - Value: {value.ToHex()}");
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine($"\tValue couldn't read: {ex.Message}");
+                            Console.WriteLine($"\t{c} - Value couldn't read: {ex.Message}");
                         }
                     });
             }
