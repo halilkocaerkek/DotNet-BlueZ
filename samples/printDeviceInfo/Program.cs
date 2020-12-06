@@ -118,7 +118,7 @@ class Program
                         try
                         {
                             byte[] value = await characteristic.ReadValueAsync(timeout);
-                            Console.WriteLine($"\t{c} - Value: {value.ToHex()}");
+                            Console.WriteLine($"\t{c} - Value: {value.ToHex()}, {value.ToInt()}");
                         }
                         catch (Exception ex)
                         {
