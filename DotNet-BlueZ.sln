@@ -5,15 +5,15 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E5FA62AE-D2A7-4A19-9B32-139BB96398BC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetBlueZ", "..\src\DotNetBlueZ.csproj", "{8320471D-D715-4CA2-A446-4168A9BB89C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetBlueZ", ".\src\DotNetBlueZ.csproj", "{8320471D-D715-4CA2-A446-4168A9BB89C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E80596B3-20B3-446D-9A2D-CC7607885AD5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "scan", "..\samples\scan\scan.csproj", "{1F67AF44-DBF0-47D9-8D05-05D78AB4B4C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "scan", ".\samples\scan\scan.csproj", "{1F67AF44-DBF0-47D9-8D05-05D78AB4B4C7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "printDeviceInfo", "..\samples\printDeviceInfo\printDeviceInfo.csproj", "{81DE0371-CB00-4393-AAD9-49AC7E6E0E31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "printDeviceInfo", ".\samples\printDeviceInfo\printDeviceInfo.csproj", "{81DE0371-CB00-4393-AAD9-49AC7E6E0E31}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "subscribeToCharacteristic", "..\samples\subscribeToCharacteristic\subscribeToCharacteristic.csproj", "{D6B1F9FA-065D-4833-BADA-2E6271501CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "subscribeToCharacteristic", ".\samples\subscribeToCharacteristic\subscribeToCharacteristic.csproj", "{D6B1F9FA-065D-4833-BADA-2E6271501CF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
