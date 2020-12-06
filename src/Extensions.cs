@@ -99,7 +99,23 @@ namespace HashtagChris.DotNetBlueZ.Extensions
       return null;
     }
 
-    public static Task<IReadOnlyList<IGattCharacteristic1>> GetCharacteristicsAsync(this IGattService1 service)
+    public static async Task<List<GattCharacteristic>> GetAllCharacteristicAsync(this IGattService1 service, string characteristicUUID)
+    {
+        var result = new List<GattCharacteristic>();
+        var characteristics = await BlueZManager.GetProxiesAsync<IGattCharacteristic1>(BluezConstants.GattCharacteristicInterface, service);
+
+        foreach (var characteristic in characteristics)
+        {
+            var uuid = await characteristic.GetUUIDAsync();
+
+            var ch = await GattCharacteristic.CreateAsync(characteristic);
+            result.Add(ch);
+        }
+
+        return result;
+    }
+
+        public static Task<IReadOnlyList<IGattCharacteristic1>> GetCharacteristicsAsync(this IGattService1 service)
     {
         return BlueZManager.GetProxiesAsync<IGattCharacteristic1>(BluezConstants.GattCharacteristicInterface, service);
     }
