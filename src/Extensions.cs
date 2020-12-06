@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Tmds.DBus;
@@ -99,17 +100,18 @@ namespace HashtagChris.DotNetBlueZ.Extensions
       return null;
     }
 
-    public static async Task<List<GattCharacteristic>> GetAllCharacteristicAsync(this IGattService1 service)
+    public static async Task<List<string>> GetAllCharacteristicAsync(this IGattService1 service)
     {
-        var result = new List<GattCharacteristic>();
+        var result = new List<string>();
         var characteristics = await BlueZManager.GetProxiesAsync<IGattCharacteristic1>(BluezConstants.GattCharacteristicInterface, service);
 
+        Debug.WriteLine($"{characteristics.Count} characteristics found");
         foreach (var characteristic in characteristics)
         {
             var uuid = await characteristic.GetUUIDAsync();
 
-            var ch = await GattCharacteristic.CreateAsync(characteristic);
-            result.Add(ch);
+            //var ch = await GattCharacteristic.CreateAsync(characteristic);
+            result.Add(uuid);
         }
 
         return result;
@@ -189,5 +191,11 @@ namespace HashtagChris.DotNetBlueZ.Extensions
 
       return (taskSource.Task, watcher);
     }
-  }
+
+    public static string ToHex(this byte[] ba)
+    {
+        return BitConverter.ToString(ba).Replace("-", "");
+    }
+
+    }
 }

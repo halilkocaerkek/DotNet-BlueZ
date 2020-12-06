@@ -113,9 +113,17 @@ class Program
                 chars?.ToList()
                     .ForEach(async c =>
                     {
-                        Console.WriteLine($"\tCharacteristic {index++}: {c.GetUUIDAsync().ToString()}");
-                        var value = await c.ReadValueAsync(timeout);
-                        Console.WriteLine($"\tValue: {value}");
+                        Console.WriteLine($"\tCharacteristic {index++}: {c}");
+                        var characteristic = await service.GetCharacteristicAsync(c);
+                        try
+                        {
+                            byte[] value = await characteristic.ReadValueAsync(timeout);
+                            Console.WriteLine($"\tValue: {value.ToHex()}");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"\tValue couldn't read: {ex.Message}");
+                        }
                     });
             }
             else
