@@ -59,7 +59,7 @@ class Program
         Console.WriteLine("Connected.");
 
         Console.WriteLine("Waiting for services to resolve...");
-        await device.WaitForPropertyValueAsync("ServicesResolved", value: true, timeout);
+        //await device.WaitForPropertyValueAsync("ServicesResolved", value: true, timeout);
 
         var servicesUUID = await device.GetUUIDsAsync();
         Console.WriteLine($"Device offers {servicesUUID.Length} service(s).");
@@ -116,7 +116,8 @@ class Program
                         try
                         {
                             byte[] value = await characteristic.ReadValueAsync(timeout);
-                            Console.WriteLine($"Service: {s}, characteristic: {c}");
+                            //Console.WriteLine($"Service: {s}, characteristic: {c}");
+                            Console.WriteLine($"{characteristic.ObjectPath.ToString()}");
                             Console.WriteLine($"\tValue: {value.ToHex()}, {value.ToInt()}");
                         }
                         catch (Exception ex)
@@ -132,7 +133,7 @@ class Program
             }
         });
 
-        await Task.Delay(1000);
+        await Task.Delay(10000);
         await device.DisconnectAsync();
         Console.WriteLine("Disconnected.");
     }

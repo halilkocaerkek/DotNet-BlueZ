@@ -6,15 +6,15 @@ namespace BleLibrary
     {
         public Service()
         {
-            Characteristics = new List<Characteristic>();
+            Characteristics = new List<ICharacteristic>();
         }
 
-        public Service(List<Characteristic> characteristics)
+        public Service(List<ICharacteristic> characteristics)
         {
             Characteristics = characteristics;
         }
 
-        public List<Characteristic> Characteristics { get; set; }
-
+        public List<ICharacteristic> Characteristics { get; set; }
+        public Beacon Beacon { get; set; }
     }
 }
