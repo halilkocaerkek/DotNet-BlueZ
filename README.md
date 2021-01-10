@@ -1,3 +1,9 @@
+
+This repo is forked from https://github.com/hashtagchris/DotNet-BlueZ 
+please use original repo. 
+this is just a copy for learning purpose.
+
+
 # DotNet-BlueZ
 A quick and dirty library for BlueZ's D-Bus APIs. Primary focus is Bluetooth Low Energy.
 
